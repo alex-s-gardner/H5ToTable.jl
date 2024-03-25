@@ -36,7 +36,7 @@ isfile(local_path) || Downloads.download(url, local_path)
 
 Define a variable and attribute and read using h5table
 ```julia
-# define Tuble of Pairs{Symbol, H5var/H5att}
+# define Tuple of Pairs{Symbol, H5var/H5att}
 items = (
     :latitude => H5var(parent="/gt1l/land_ice_segments", item="latitude"),
     :height => H5var(parent="/gt1l/land_ice_segments", item="h_li"),
