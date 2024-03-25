@@ -15,14 +15,14 @@ pairs and returns a Tables compliant NamedTuple with Symbols assigned as keys.
 
 # It's easiest to learn through example
 
-Install
+Install packages
 ```julia
 ]add H5ToTables
 ]add DataFrames
 ]add Downloads
 ```
 
-Load package to specify path to HDF5 file
+Load packages and download an example HDF5 file
 ```julia
 using H5ToTables
 using DataFrames
