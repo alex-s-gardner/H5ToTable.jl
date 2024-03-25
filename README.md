@@ -1,5 +1,4 @@
 # H5ToTables
-[![Build Status](https://github.com/alex-s-gardner/H5ToTable.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/alex-s-gardner/H5ToTable.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
 H5ToTables reads HDF5 vector variables and attributes and places them into a Tables 
 compliant NamedTuple. H5ToTables supports subsetting by min and max variable values 
