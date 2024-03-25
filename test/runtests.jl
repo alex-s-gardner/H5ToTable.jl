@@ -6,18 +6,16 @@ using HDF5
 @testset "H5ToTables.jl" begin
 
     # ensure test data is present
-    testdir = @__DIR__
-    datadir = joinpath(testdir, "data")
-    isdir(datadir) || mkdir(datadir)
+    begin
+        url = "https://github.com/evetion/SpaceLiDAR-artifacts/releases/download/v0.3.0/ATL06_20220404104324_01881512_006_02.h5"
 
-    function download_artifact(version, source_filename)
+        source_filename = splitpath(url)[end]
+        datadir = joinpath(@__DIR__, "data")
+        isdir(datadir) || mkdir(datadir)
+
         local_path = joinpath(datadir, source_filename)
-        url = "https://github.com/evetion/SpaceLiDAR-artifacts/releases/download/v$version/$source_filename"
         isfile(local_path) || Downloads.download(url, local_path)
-        return local_path
     end
-
-    ATL06_fn = download_artifact(v"0.3", "ATL06_20220404104324_01881512_006_02.h5")
 
     @testset "from path" begin
         # test reading from path
@@ -27,7 +25,7 @@ using HDF5
             :spot_number => H5att(parent="/gt1l", item="atlas_spot_number"),
         )
 
-        nt = h5table(ATL06_fn, items)
+        nt = h5table(local_path, items)
         df1 = DataFrame(nt)
 
         @test nrow(df1) == 33725
@@ -37,7 +35,7 @@ using HDF5
 
     @testset "from HDF.File" begin
         # test reading from HDF.File
-        file = h5open(ATL06_fn)
+        file = h5open(local_path)
         nt = h5table(file, items)
         df2 = DataFrame(nt)
         @test df1 == df2
