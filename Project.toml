@@ -1,0 +1,19 @@
+name = "H5ToTables"
+uuid = "adcd76a6-33ed-423f-8976-18bff4aa2144"
+authors = ["Alex Gardner <alex.s.gardner@jpl.nasa.gov>"]
+version = "1.0.0-DEV"
+
+[deps]
+FillArrays = "1a297f60-69ca-5386-bcde-b61e274b549b"
+HDF5 = "f67ccb44-e63f-5c2f-98bd-6dc0ccc4ba2f"
+
+[compat]
+julia = "1.5"
+
+[extras]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
